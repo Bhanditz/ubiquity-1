@@ -9,7 +9,8 @@ RUN CGO_ENABLED=1 GOOS=linux go build -tags netgo -v -a --ldflags '-w -linkmode 
 
 FROM alpine:3.8
 RUN apk --no-cache add ca-certificates=20171114-r3 openssl=1.0.2p-r0
-WORKDIR /root/
+RUN groupadd -r ubiquity && useradd --no-log-init -r -g ubiquity ubiquity
+USER ubiquity
 COPY --from=0 /go/src/github.com/IBM/ubiquity/ubiquity .
 COPY --from=0 /go/src/github.com/IBM/ubiquity/LICENSE .
 COPY --from=0 /go/src/github.com/IBM/ubiquity/scripts/notices_file_for_ibm_storage_enabler_for_containers ./NOTICES
