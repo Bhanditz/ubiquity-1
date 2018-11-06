@@ -9,7 +9,7 @@ RUN CGO_ENABLED=1 GOOS=linux go build -tags netgo -v -a --ldflags '-w -linkmode 
 
 FROM alpine:3.8
 RUN apk --no-cache add ca-certificates=20171114-r3 openssl=1.0.2p-r0
-RUN groupadd -r ubiquity && useradd --no-log-init -r -g ubiquity ubiquity
+RUN addgroup -S ubiquity && adduser -S ubiquity -G ubiquity
 USER ubiquity
 COPY --from=0 /go/src/github.com/IBM/ubiquity/ubiquity .
 COPY --from=0 /go/src/github.com/IBM/ubiquity/LICENSE .
