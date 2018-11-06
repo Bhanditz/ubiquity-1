@@ -14,9 +14,7 @@ USER ubiquity
 COPY --from=0 /go/src/github.com/IBM/ubiquity/ubiquity .
 COPY --from=0 /go/src/github.com/IBM/ubiquity/LICENSE .
 COPY --from=0 /go/src/github.com/IBM/ubiquity/scripts/notices_file_for_ibm_storage_enabler_for_containers ./NOTICES
-
 COPY docker-entrypoint.sh .
-RUN chmod u+x docker-entrypoint.sh
 
 # comments below should be removed when we implement the new SSL_MODE env variable
 ENV PATH=/root:$PATH \
