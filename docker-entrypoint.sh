@@ -4,8 +4,8 @@ set -e
 export SSL_PRIVATE_DIR=`dirname $UBIQUITY_SERVER_CERT_PRIVATE`
 export SSL_PUBLIC_DIR=`dirname $UBIQUITY_SERVER_CERT_PUBLIC`
 
-export USER=root
-export GROUP=root
+export USER=ubiquity
+export GROUP=ubiquity
 export EMAIL="user@test.com"
 
 configure_ssl() {
